@@ -16,7 +16,8 @@ use safe_format::safe_format;
 fn main() {
     let name = "Allen";
     let age = 19;
-    let greeting = safe_format!("Greeting from {name}", name = name, age = age);
+    let pattern = "Greeting from {name}";
+    let greeting = safe_format!(pattern, name = name, age = age);
     println!("{}", greeting);  // Output: Greeting from Allen
 }
 
