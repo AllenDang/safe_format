@@ -34,6 +34,24 @@ impl Parse for SafeFormatInput {
     }
 }
 
+/// A procedural macro that formats strings using named parameters.
+///
+/// # Overview
+///
+/// The `safe_format` macro allows you to create formatted strings using named parameters,
+/// similar to the standard `format!` macro. It safely ignores any extra parameters that
+/// are not used in the format string, providing a flexible and convenient way to handle
+/// string formatting in Rust.
+///
+/// # Returns
+///
+/// Returns a `String` containing the formatted output with the named parameters
+/// substituted into the format string.
+///
+/// # Errors
+///
+/// This macro does not produce any runtime errors if extra parameters are provided
+/// that are not used in the format string. These extra parameters are simply ignored.
 #[proc_macro]
 pub fn safe_format(input: TokenStream) -> TokenStream {
     let SafeFormatInput {
