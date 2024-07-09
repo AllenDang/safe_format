@@ -1,6 +1,6 @@
 [package]
 name = "safe_format"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Allen Dang <allengnr@gmail.com>"]
 edition = "2021"
 description = "safe_format! macro works similarly to the built-in format! macro but allows for named parameters and it safely ignores any extra parameters that are not used in format string"
