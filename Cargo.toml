@@ -4,7 +4,8 @@ version = "0.1.0"
 edition = "2021"
 description = "safe_format! macro works similarly to the built-in format! macro but allows for named parameters and it safely ignores any extra parameters that are not used in format string"
 
-[lib]name = "safe_format"
+[lib]
+name = "safe_format"
 version = "0.1.0"
 edition = "2021"
 proc-macro = true
