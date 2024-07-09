@@ -3,16 +3,17 @@ extern crate proc_macro;
 use proc_macro::TokenStream;
 use quote::quote;
 use syn::parse::{Parse, ParseStream};
-use syn::{parse_macro_input, LitStr, Token};
+use syn::{parse_macro_input, Expr, Token};
 
 struct SafeFormatInput {
-    format_string: LitStr,
+    format_string: Expr,
     args: Vec<(proc_macro2::Ident, syn::Expr)>,
 }
 
 impl Parse for SafeFormatInput {
     fn parse(input: ParseStream) -> syn::Result<Self> {
-        let format_string: LitStr = input.parse()?;
+        let format_string: Expr = input.parse()?;
+
         input.parse::<Token![,]>()?;
 
         let mut args = Vec::new();
@@ -59,8 +60,22 @@ pub fn safe_format(input: TokenStream) -> TokenStream {
         args,
     } = parse_macro_input!(input as SafeFormatInput);
 
-    let mut format_tokens = format_string.value();
+    let mut format_tokens: String;
     let mut format_args = Vec::new();
+
+    if let Expr::Lit(expr_lit) = &format_string {
+        if let syn::Lit::Str(lit_str) = &expr_lit.lit {
+            format_tokens = lit_str.value();
+        } else {
+            return TokenStream::from(quote! {
+                compile_error!("First argument must be a string literal or a variable of type String.");
+            });
+        }
+    } else {
+        return TokenStream::from(quote! {
+            compile_error!("First argument must be a string literal or a variable of type String.");
+        });
+    }
 
     for (name, expr) in args {
         let placeholder = format!("{{{}}}", name);
