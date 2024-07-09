@@ -1,8 +1,17 @@
 [package]
 name = "safe_format"
 version = "0.1.0"
+authors = ["Allen Dang <allengnr@gmail.com>"]
 edition = "2021"
 description = "safe_format! macro works similarly to the built-in format! macro but allows for named parameters and it safely ignores any extra parameters that are not used in format string"
+categories = ["value-formatting"]
+license = "MIT/Apache-2.0"
+readme = "README.md"
+keywords = ["safe-format", "format"]
+homepage = "https://github.com/AllenDang/safe_format"
+repository = "https://github.com/AllenDang/safe_format"
+exclude = ["/.github", ".gitignore"]
+rust-version = "1.79.0"
 
 [lib]
 name = "safe_format"
