@@ -6,6 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.1.4](https://github.com/AllenDang/safe_format/compare/v0.1.3...v0.1.4) - 2024-07-09
+
+### Other
+- Adjust literal and string type checker
+
 ## [0.1.3](https://github.com/AllenDang/safe_format/compare/v0.1.2...v0.1.3) - 2024-07-09
 
 ### Other
